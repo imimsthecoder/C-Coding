@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+
+double Fah() // the purpose of this is to store the input from the user to convert Fahrenheit
+{
+    double dF;
+    
+    cout << "Please enter the temperature in Fahrenheit: ";
+  
+
+  while (!(cin >> dF))
+  {
+     cout << "Please enter a numerical value: ";
+     cin.clear();
+     cin.ignore(1000, '\n');
+  }
+  
+  return dF;
+}    
+
+double Cel(double f)
+{
+    
+    double ceL = (f - 32) * 5.0/9.0;
+   return ceL;
+}
+
+int main()
+         
+{
+     double fahrenheit = Fah();
+     double celsius = Cel(fahrenheit);
+     
+     cout << "The celsius verison of the temperature is: " << celsius;
+     
+     return 0;
+}    
