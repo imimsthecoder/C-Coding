@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+ 
+    bool isValid = false;
+    string yes;
+
+    cout << "Do you have a key? Type yes or no.";
+    cin >> yes;
+    
+ for (char &c : yes)
+ c = tolower(c);
+ 
+if (yes == "yes" )
+{
+    cout << "You open the door!";
+}
+  else if (yes == "no")
+ { 
+  cout << "You don't have a key. Please get a key and come back";
+  cin.clear();
+  cin.ignore(1000, '\n');
+  }
+  
+  else 
+  {
+      cout << "Please enter yes or no only. Thank you.";
+  }
+  return 0;
+}
