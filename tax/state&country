@@ -1,0 +1,101 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+
+double getProfits() //The goal is the have money be entered here, so the money can be stored and used at any point in time. If the money changes, so does the result
+{
+   double x;
+    
+    cout << "Please enter the amount of money generated this year: ";
+
+    
+    while (!(cin >> x))
+    {
+        cout << "Invalid input, please enter a numeric value: ";
+        cin.clear();
+        cin.ignore(1000, '\n');
+        
+    }
+    
+    return x;
+}
+
+double tax(double sales) // this function is purposed as the amount of taxes at the state and country tax. If the person clicks state, country or both, they'll get a number in main
+{
+    
+    double state = 0.04;
+    double country = 0.02;
+    double total = 0.0;
+    int chance;
+    
+    cout << "Would you like:\n"
+         << "1. State Taxes. \n"
+         << "2. Country Taxes. \n"
+         << "3. Total Taxes.";
+         cin >> chance;
+         
+    switch (chance)
+    {
+        case 1:
+        {
+         double stotal = state * sales;
+         total = stotal;
+        break;
+        }
+        case 2:
+        {
+         double ctotal = country * sales;
+         total = ctotal;
+        break;
+        }
+        case 3:
+         {
+       
+         double ctotal = sales * country;
+         double stotal = sales * state;
+         
+         double ftotal = ctotal + stotal;
+        
+         total = ftotal;
+        break;
+         }
+        default:
+        {
+            cout << "Please select a valid option: ";
+            total = 0.0;
+            break;
+        }
+        
+    
+        
+    }
+    
+    return total;
+}
+
+int main()
+{
+    double profits = getProfits();
+    double taxtotal = tax(profits);
+    double final = profits - taxtotal;
+    
+    cout << fixed;
+    cout.precision(2);
+    
+    cout << "Total Profits: " << profits << endl
+         << "Total Taxes: " << taxtotal << endl
+         << "Final Amount after taxes: " << final << endl;
+         
+         return 0;
+         
+         
+      
+}
