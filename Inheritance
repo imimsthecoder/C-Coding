@@ -1,0 +1,101 @@
+
+#include <iostream>
+using namespace std;
+using std:: string;
+class abstractEmployee
+{
+     virtual void Promotion() = 0;
+};
+   
+ 
+
+class Employee:abstractEmployee {
+    
+ 
+    string Name;
+    string Company;
+    int Age;
+public: 
+    void setName(string name)
+    {
+        Name = name;
+    }
+    string getName()
+    {
+        return Name;
+    }
+    
+    void setCompany(string company)
+    {
+        Company = company;
+    }
+    string getCompany()
+    {
+        return Company;
+    
+    }
+    
+    void setAge(int age)
+    {
+        if (age >= 18)
+        
+        Age = age;
+    
+    }
+    
+    int getAge()
+    {
+        return Age;
+    }
+    void introduction()
+    {
+        cout << "Name: "<< Name << endl;
+        cout << "Company: " << Company << endl;
+        cout << "Age: " << Age << endl;
+    }
+        void Promotion(){
+            if (Age > 30)
+            cout << "Congralutaions, "<< Name << " gets a promotion!" <<endl;
+            else 
+            cout << Name << ", you can't qualify for a promotion yet. Keep trying and you'll get it!" <<endl;
+        }
+    
+    Employee(string name, string company, int age){
+        Name= name;
+        Company= company;
+        Age = age;
+    }
+  
+};
+
+class Developer: Employee
+{
+public:
+      string FavProgramminglanguage;
+      Developer(string name, string company, int age, string favProgramminglanguage)
+      :Employee(name, company, age)
+      {
+         FavProgramminglanguage = favProgramminglanguage;
+      }
+      void FixBug()
+      {
+          cout << getName() << " has fixed the bug using " << FavProgramminglanguage << endl;
+      }
+};
+int main()
+{
+
+  
+  Employee employee1= Employee("Devin", "Mircosoft", 34);
+  employee1.introduction();
+ 
+ Employee employee2 = Employee("Rock", "Gun Fu", 24);
+ employee2.introduction();
+  Developer d= Developer("Billy", "Youtube", 51, "C++");
+  
+  employee1.Promotion();
+  employee2.Promotion();
+d.FixBug();
+  
+
+  }
