@@ -1,0 +1,146 @@
+
+#include <iostream>
+using namespace std;
+using std:: string;
+class abstractEmployee
+{
+     virtual void Promotion() = 0;
+};
+   
+ 
+
+class Employee:abstractEmployee {
+    
+ 
+    
+    string Company;
+    int Age;
+protected:
+
+     string Name;
+     
+public: 
+    void setName(string name)
+    {
+        Name = name;
+    }
+    string getName()
+    {
+        return Name;
+    }
+    
+    void setCompany(string company)
+    {
+        Company = company;
+    }
+    string getCompany()
+    {
+        return Company;
+    
+    }
+    
+    void setAge(int age)
+    {
+        if (age >= 18)
+        
+        Age = age;
+    
+    }
+    
+    int getAge()
+    {
+        return Age;
+    }
+    void introduction()
+    {
+        cout << "Name: "<< Name << endl;
+        cout << "Company: " << Company << endl;
+        cout << "Age: " << Age << endl;
+    }
+        void Promotion(){
+            if (Age > 30)
+            cout << "Congralutaions, "<< Name << " gets a promotion!" <<endl;
+            else 
+            cout << Name << ", you can't qualify for a promotion yet. Keep trying and you'll get it!" <<endl;
+        }
+    
+    Employee(string name, string company, int age){
+        Name= name;
+        Company= company;
+        Age = age;
+    }
+  virtual void Work(){
+      cout << Name << " is checking emails, backlog and performing those tasks..." << endl;
+  }
+};
+
+class Developer:public Employee
+{
+public:
+      string FavProgramminglanguage;
+      Developer(string name, string company, int age, string favProgramminglanguage)
+      :Employee(name, company, age)
+      {
+         FavProgramminglanguage = favProgramminglanguage;
+      }
+      void FixBug()
+      {
+          cout << Name << " has fixed the bug using " << FavProgramminglanguage << endl;
+      }
+       void Work(){
+      cout << Name << " is writing " << FavProgramminglanguage <<" code." << endl;
+  }
+};
+
+class Teacher:public Employee{
+public: 
+    
+    string Subject; 
+    void preparedLesson()
+    {
+        cout << Name << " is preparing " << Subject << " lessons for today!" << endl;
+        
+    }
+  Teacher(string name, string company, int age, string subject)
+  :Employee(name, company, age)
+  {
+      Subject = subject;
+      
+  }
+   void Work(){
+      cout << Name << " is teaching " << Subject << "." << endl;
+  };
+};
+
+int main()
+{
+
+  
+  Employee employee1= Employee("Devin", "Mircosoft", 34);
+  employee1.introduction();
+ 
+ Employee employee2 = Employee("Rock", "Gun Fu", 24);
+ employee2.introduction();
+  Developer d= Developer("Billy", "Youtube", 51, "C++");
+  
+  employee1.Promotion();
+  employee2.Promotion();
+d.FixBug();
+  
+d.Promotion();
+
+Teacher t = Teacher("Riley", "Dunk High School", 30, "Math");
+t.preparedLesson();
+t.Promotion();
+t.Work();
+d.Work();
+employee1.Work();
+
+Employee *e1 =&d;
+Employee *e2 =&t;
+
+e1->Work();
+e2->Work();
+
+
+  }
